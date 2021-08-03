@@ -7,6 +7,7 @@
 // require('~/app/libs/mmenu/dist/mmenu.js')
 import {Swiper, Parallax, Mousewheel, Controller, Pagination, Scrollbar, Navigation} from 'swiper'
 Swiper.use([Parallax, Mousewheel, Controller, Pagination, Scrollbar, Navigation])
+import {gsap, Power2 } from 'gsap'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -41,5 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	swiperImg.controller.control = swipreText
 	swipreText.controller.control = swiperImg
 
+	let gear = document.querySelector('.slider-gear')
+	swipreText.on('slideNextTransitionStart', function() {
+		gsap.to(gear, 2.8, {
+			rotation: '+=40',
+			ease: Power2.easeOut
+		})
+	})
+
+	swipreText.on('slidePrevTransitionStart', function() {
+		gsap.to(gear, 2.8, {
+			rotation: '-=40',
+			ease: Power2.easeOut
+		})
+	})
 
 })
