@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					force3D: true,
 					y: 10
 				})
+				
 				curnum.innerHTML = `0${ind}`
 				pegcur.innerHTML = `0${ind}`
 			}
