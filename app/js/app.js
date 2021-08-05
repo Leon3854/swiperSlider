@@ -24,7 +24,22 @@ Swiper.use([
 ]);
 import { gsap, Power2 } from "gsap";
 
+import MicroModal from 'micromodal'
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+	//Modal
+
+	MicroModal.init({
+		openTrigger: 'data-micromodal-open',
+		closeTrigger: 'data-micromodal-close',
+		disableFocus: true,
+		disableScroll: true,
+		awaitOpenAnimation: true,
+		awaitCloseAnimation: true
+	});
+
   // Custom JS
 
   const swiperImg = new Swiper(".slider-img", {
@@ -35,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			el: ".slider-pagination-count .total",
 			type: 'custom',
 			renderCustom: function(swiper, current, total) {
-				return `0${total}`
+				const totalRes = total >= 10 ? total: `0${total}`
+				return totalRes
 			}
 		}
   });
@@ -87,7 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 	swipreText.on('slideChange', function() {
-		const ind = swipreText.realIndex + 1
+		const ind = swipreText.realIndex + 1, 
+					indRes = ind >= 10 ? ind : `0${ind}`
 		gsap.to(curnum, .2, {
 			force3D: true,
 			y: -10,
@@ -99,8 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					y: 10
 				})
 				
-				curnum.innerHTML = `0${ind}`
-				pegcur.innerHTML = `0${ind}`
+				curnum.innerHTML = indRes
+				pegcur.innerHTML = indRes
 			}
 		})
 		gsap.to(curnum, .2, {

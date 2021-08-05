@@ -1,0 +1,22 @@
+.form-input {
+  display: block;
+  background-color: $dark;
+  border: 1px solid lighten($dark, 7);
+  padding: 12px 18px;
+  min-width: 280px;
+  color: #fff;
+  font-size: 15px;
+  transition: border .5s ease-in ;
+  &:focus {
+    border: 1px solid lighten($dark, 20);
+
+  }
+  &::placeholder {
+    color: rgba(#ffffff, .25);
+  }
+}
+
+textarea.form-input {
+  min-height: 100px;
+  
+}
